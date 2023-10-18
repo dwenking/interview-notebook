@@ -9,9 +9,12 @@
 |               | 反转列表                       | l.reverse()                                                    |
 |               | 对列表进行排序                 | l.sort()<br />l2 = sorted(l, key=lambda x: x[0], reverse=True) |
 |               | 统计列表中的元素               | l.count(1)<br />max(l)<br />min(l)                             |
-| stack         | 新建栈                         | stack = []                                                     |
-|               | 添加元素                       | stack.append(1)                                                |
-|               | 弹出元素                       | val = stack.pop()                                              |
+| stack         | 新建栈                         | s = []                                                        |
+|               | 添加元素                       | s.append(1)                                                    |
+|               | 弹出元素                       | val = s.pop()                                                  |
+| queue         | 新建队列                       | q = []                                                         |
+|               | 添加元素                       | q.append(1)                                                    |
+|               | 弹出元素                       | q.pop(0)                                                       |
 | deque         | 新建双向队列                   | que = collections.deque()                                      |
 |               | 添加元素                       | que.append(1)                                                  |
 |               | 弹出元素                       | que.popleft()                                                  |
