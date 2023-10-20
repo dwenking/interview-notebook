@@ -2,7 +2,7 @@
 
 [1. Python基础](1basic/python.md)
 
-[2. Java基础](basic/java.md)
+[2. Java基础](1basic/java.md)
 
 [3. Shell基础](basic/shell.md)
 
