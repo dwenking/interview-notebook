@@ -15,6 +15,7 @@
 |               | 加入新元素         | m.put(a, b);                                                                           |
 |               | 获取元素           | m.get(k);                                                                              |
 |               | 查询元素           | m.containsKey(k)                                                                       |
+|               | 元素不存在时的处理 | m.putIfAbsent(k, 0);<br />m.getOrDefault(k, 0)                                         |
 | Queue         | 新建队列           | Queue `<Integer>` q = new LinkedList<>();                                            |
 |               | 加入元素           | q.offer(1);                                                                            |
 |               | 弹出元素           | q.poll();                                                                              |
