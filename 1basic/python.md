@@ -5,7 +5,7 @@
 |               | 切片                           | lastTwo = l[-2:]                                               |
 | list          | 新建列表                       | l = []                                                         |
 |               | 插入新元素                     | l.append(1)<br />l.insert(1, 1)                                |
-|               | 移除元素                       | l.remove(1)                                                    |
+|               | 移除元素                       | l.remove(1)<br />l.pop(idx)                                    |
 |               | 反转列表                       | l.reverse()                                                    |
 |               | 对列表进行排序                 | l.sort()<br />l2 = sorted(l, key=lambda x: x[0], reverse=True) |
 |               | 统计列表中的元素               | l.count(1)<br />max(l)<br />min(l)                             |

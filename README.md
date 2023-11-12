@@ -4,7 +4,7 @@
 
 [2. Java基础](1basic/java.md)
 
-[3. Shell基础](basic/shell.md)
+[3. Shell基础](1basic/shell.md)
 
 # 数据结构与算法
 
