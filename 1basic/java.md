@@ -1,6 +1,7 @@
 | Class         | Description        | Method                                                                                 |
 | ------------- | ------------------ | -------------------------------------------------------------------------------------- |
-| List          | 新建列表           | List `<Integer>` a = new ArrayList<>()                                               |
+| Arrays        | 排序               | Arrays.sort(a);                                                                        |
+| List          | 新建列表           | List `<Integer>` a = new ArrayList<>();                                              |
 |               | 加入元素           | a.add(1);                                                                              |
 |               | 移除元素           | a.remove(4);                                                                           |
 |               | 对列表排序         | Collections.sort(a);                                                                   |
@@ -15,7 +16,7 @@
 |               | 加入新元素         | m.put(a, b);                                                                           |
 |               | 获取元素           | m.get(k);                                                                              |
 |               | 查询元素           | m.containsKey(k)                                                                       |
-|               | 元素不存在时的处理 | m.putIfAbsent(k, 0);<br />m.getOrDefault(k, 0)                                         |
+|               | 元素不存在时的处理 | m.putIfAbsent(k, 0);<br />m.getOrDefault(k, 0);                                        |
 | Queue         | 新建队列           | Queue `<Integer>` q = new LinkedList<>();                                            |
 |               | 加入元素           | q.offer(1);                                                                            |
 |               | 弹出元素           | q.poll();                                                                              |
