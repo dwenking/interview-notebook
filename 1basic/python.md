@@ -9,6 +9,7 @@
 |               | 反转列表                       | l.reverse()                                                    |
 |               | 对列表进行排序                 | l.sort()<br />l2 = sorted(l, key=lambda x: x[0], reverse=True) |
 |               | 统计列表中的元素               | l.count(1)<br />max(l)<br />min(l)                             |
+|               | 查找                           | l.index(a)                                                     |
 | stack         | 新建栈                         | s = []                                                        |
 |               | 添加元素                       | s.append(1)                                                    |
 |               | 弹出元素                       | val = s.pop()                                                  |
