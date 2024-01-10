@@ -16,6 +16,8 @@
 ## 算法
 
 1. [双指针](2algorithm/pointer.md)
+2. [二分查找](2algorithm/bisearch.md)
+3. [回溯](2algorithm/reverse.md)
 
 # 参考资料
 
