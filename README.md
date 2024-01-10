@@ -1,23 +1,23 @@
 # 编程基础
 
-1. [Python基础](1basic/python.md)
-2. [Java基础](1basic/java.md)
-3. [Shell基础](1basic/shell.md)
+1. Python基础: [笔记](1basic/python.md)
+2. Java基础: [笔记](1basic/java.md)
+3. Shell基础: [笔记](1basic/shell.md)
 
 # 数据结构与算法
 
 ## 数据结构
 
-1. [基本知识](2algorithm/basic.md)
-2. [链表](2algorithm/list.md)
-3. [二叉树](2algorithm/bitree.md)
-4. [栈和队列](2algorithm/staque.md)
+1. 基本知识: [笔记](2algorithm/basic.md)
+2. 链表: [笔记](2algorithm/list.md)
+3. 二叉树: [笔记](2algorithm/bitree.md)
+4. 栈和队列: [笔记](2algorithm/staque.md)
 
-## 算法
+## 算法shuan z
 
-1. [双指针](2algorithm/pointer.md)
-2. [二分查找](2algorithm/bisearch.md)
-3. [回溯](2algorithm/reverse.md)
+1. 双指针：[笔记](2algorithm/pointer.md) 
+2. 二分查找：[笔记](2algorithm/bisearch.md)
+3. 回溯：[笔记](2algorithm/reverse.md)
 
 # 参考资料
 
