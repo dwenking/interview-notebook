@@ -13,11 +13,13 @@
 3. 二叉树: [笔记](2algorithm/bitree.md)
 4. 栈和队列: [笔记](2algorithm/staque.md)
 
-## 算法shuan z
+## 算法
 
-1. 双指针：[笔记](2algorithm/pointer.md) 
+1. 双指针：[笔记](2algorithm/pointer.md)
 2. 二分查找：[笔记](2algorithm/bisearch.md)
 3. 回溯：[笔记](2algorithm/reverse.md)
+4. 动态规划：[笔记](2algorithm/dp.md)
+5. 贪心：[笔记](2algorithm/tan.md)
 
 # 参考资料
 
