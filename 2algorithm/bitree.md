@@ -7,6 +7,10 @@
 
 # 遍历方法
 
+* 如果需要利用二叉搜索树性质，一般需要中序遍历
+* 如果构造二叉树，一般需要前序遍历
+* 如果在二叉树中做搜索，一般是自底向上，后序遍历
+
 ## 深度遍历
 
 实现方法：递归法比较简单就略过了，考虑迭代法的实现。
@@ -77,5 +81,7 @@ Morris遍历的特点是其减少了遍历所需的空间复杂度，只使用$O
 | [路径总和 II](https://leetcode.cn/problems/path-sum-ii/)                                                                   | 与上题对比，如果只需要搜索树中**一条**满足条件的路径，则函数有返回值；<br />如果需要搜索树中**所有**满足条件的路径，则函数不需要返回值                     |
 | [从中序与后序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) | 理清思路顺序，首先获取**根节点**，接着在中序**划分左右；**<br />注意：**后序数组的切割**如何确定？<br />**优化时间复杂度**：通过哈希表保存位置 |
 | [验证二叉搜索树](https://leetcode.cn/problems/validate-binary-search-tree/)                                                | 掌握二叉搜索树（BST）的性质：**中序遍历下二叉搜索树是有序序列**                                                                                                  |
-| [二叉搜索树中的众数](https://leetcode.cn/problems/find-mode-in-binary-search-tree/)                                        | 代码与*验证二叉搜索树* 相似，利用BST性质转化成**有序序列**再统计结果                                                                                                |
-| [二叉树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)                              | 理解本题 函数的返回值 如何处理                                                                                                                                         |
+| [二叉搜索树中的众数](https://leetcode.cn/problems/find-mode-in-binary-search-tree/)                                        | 代码与*验证二叉搜索树* 相似，利用BST性质转化成**有序序列**再统计结果                                                                                           |
+| [二叉树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)                              | 理解本题**函数的返回值**如何处理，<br />如果不需要搜索整棵树则找到目标后直接返回，否则使用变量暂存返回值                                                         |
+| [二叉搜索树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/)                   | 理解BST中最近公共祖先具有的性质                                                                                                                                        |
+| [删除二叉搜索树中的节点](https://leetcode.cn/problems/delete-node-in-a-bst/)                                               | 分类讨论不同情况，特别是左右子树都不为空的情况                                                                                                                         |

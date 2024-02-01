@@ -9,6 +9,7 @@
 |               | 反转列表                       | l.reverse()                                                    |
 |               | 对列表进行排序                 | l.sort()<br />l2 = sorted(l, key=lambda x: x[0], reverse=True) |
 |               | 统计列表中的元素               | l.count(1)<br />max(l)<br />min(l)                             |
+|               | 列表拷贝                       | l2 = l1[:]<br />l2 = copy.deepcopy(l1) # 深拷贝                |
 |               | 查找                           | l.index(a)                                                     |
 | set           | 新建集合                       | s = set('abracadabra')                                         |
 |               | 插入新元素                     | s.add('x')                                                     |
