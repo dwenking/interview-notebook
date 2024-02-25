@@ -23,8 +23,8 @@
 
 1. 基本知识: [笔记](2algorithm/basic.md)
 2. 链表: [笔记](2algorithm/list.md)
-3. 二叉树: [笔记](2algorithm/bitree.md)
-4. 栈和队列: [笔记](2algorithm/staque.md) 
+3. 栈和队列: [笔记](2algorithm/staque.md)
+4. 二叉树: [笔记](2algorithm/bitree.md)
 5. 图：[笔记](2algorithm/graph.md)
 
 ## 常用算法

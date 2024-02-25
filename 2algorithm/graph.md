@@ -35,6 +35,8 @@ def dfs(graph, s):
 
 广度遍历和树一样，需要队列来保存需要搜索的点。由于广度遍历本身是往各个方向搜索的，因此必须$visit$标记点来防止无限循环。
 
+求最短路径常用广搜，当广搜到达终点时，一定是最短路径。
+
 ```python
 visited =  [[False] * n for _ in range(m)]
 
@@ -107,8 +109,10 @@ class UF:
 
 # 参考习题
 
-| 题目                                                        | 提示                                                                       |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [岛屿数量](https://leetcode.cn/problems/number-of-islands/)    | 图论基础题，重要的是从本题掌握DFS、BFS、并查集的技巧                       |
-| [飞地的数量](https://leetcode.cn/problems/number-of-enclaves/) | 将与边界相连的地都标记成海洋，最后再统计飞地个数                           |
-| [冗余连接](https://leetcode.cn/problems/redundant-connection/) | 并查集应用，如果在遍历边的过程中，发现了已经处于同一集合的点，则说明存在环 |
+| 题目                                                           | 提示                                                                                       |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [岛屿数量](https://leetcode.cn/problems/number-of-islands/)       | 图论基础题，重要的是从本题掌握DFS、BFS、并查集的技巧                                       |
+| [飞地的数量](https://leetcode.cn/problems/number-of-enclaves/)    | 将与边界相连的地都标记成海洋，最后再统计飞地个数                                           |
+| [冗余连接](https://leetcode.cn/problems/redundant-connection/)    | 并查集应用，如果在遍历边的过程中，发现了已经处于同一集合的点，则说明存在环                 |
+| [最大人工岛](https://leetcode.cn/problems/making-a-large-island/) | 如果使用暴力枚举方法的话复杂度为$O(n^4)$，因此需要做优化，首先统计岛屿面积并保存到数组里 |
+| [单词接龙](https://leetcode.cn/problems/word-ladder/)             | BFS统计最短路径                                                                            |

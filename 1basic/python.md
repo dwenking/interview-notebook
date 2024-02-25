@@ -1,6 +1,7 @@
 | Class         | Description                    | Method                                                         |
 | ------------- | ------------------------------ | -------------------------------------------------------------- |
 | str           | 统计字符串中的子字符串出现个数 | s.count()                                                      |
+|               | list合并成字符串               | "".join(list)                                                  |
 | array         | 创建固定大小的数组             | l = [0] * m<br />l = [[0] * m for _ in range(n)]               |
 |               | 切片                           | lastTwo = l[-2:]                                               |
 | list          | 新建列表                       | l = []                                                         |
@@ -11,7 +12,7 @@
 |               | 统计列表中的元素               | l.count(1)<br />max(l)<br />min(l)                             |
 |               | 列表拷贝                       | l2 = l1[:]<br />l2 = copy.deepcopy(l1) # 深拷贝                |
 |               | 查找                           | l.index(a)                                                     |
-| set           | 新建集合                       | s = set('abracadabra')                                         |
+| set           | 新建集合                       | s = set('abracadabra')<br />s = set(l)                         |
 |               | 插入新元素                     | s.add('x')                                                     |
 |               | 移除元素                       | s.remove('x')                                                  |
 | dict          | 新建字典                       | dict = {}                                                      |
