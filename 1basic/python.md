@@ -1,5 +1,7 @@
 | Class         | Description                    | Method                                                         |
 | ------------- | ------------------------------ | -------------------------------------------------------------- |
+| 数学运算      | 整除向下取整                   | a // 2                                                         |
+|               | 整除向上取整                   | math.ceil(a / 2)                                               |
 | str           | 统计字符串中的子字符串出现个数 | s.count()                                                      |
 |               | list合并成字符串               | "".join(list)                                                  |
 | array         | 创建固定大小的数组             | l = [0] * m<br />l = [[0] * m for _ in range(n)]               |
@@ -16,7 +18,9 @@
 |               | 插入新元素                     | s.add('x')                                                     |
 |               | 移除元素                       | s.remove('x')                                                  |
 | dict          | 新建字典                       | dict = {}                                                      |
+|               | 添加新元素                     | dict.get(key, 0)                                               |
 |               | 遍历字典                       | for key,value in dict.items():                                 |
+| Counter       | 新建计数                       | c = Counter()                                                  |
 | stack         | 新建栈                         | s = []                                                        |
 |               | 添加元素                       | s.append(1)                                                    |
 |               | 弹出元素                       | val = s.pop()                                                  |
@@ -29,3 +33,5 @@
 | priorityqueue | 新建优先队列                   | pq = []                                                        |
 |               | 插入元素                       | heapq.heappush(pq, 1) # 小根                                   |
 |               | 弹出元素                       | heapq.heappop(pq)                                              |
+| 其他          | 生成前缀和                     | accumulate(data, initial=0)                                    |
+|               | 遍历多个数组                   | for x, f in zip(nums, freq):                                   |

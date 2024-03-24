@@ -44,13 +44,22 @@ for(int i = 0; i < weight.size(); i++) { // 遍历物品
 如果求组合数就是外层for循环遍历物品，内层for遍历背包。
 如果求排列数就是外层for遍历背包，内层for循环遍历物品。
 
+# 划分DP
+
+需要把数组划分成n个区间。转移方程类似：
+
+```python
+dp[i][j] = max(dp[k][j - 1] * xxx, dp[i][j])
+```
+
 # 参考习题
 
-| 题目                                                                  | 提示                                                                                   |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [最小路径和](https://leetcode.cn/problems/minimum-path-sum/)             | DP基础题，注意转移方向。如果是单边移动一般是DP，如果各个方向可能是搜索或者图论         |
-| [整数拆分](https://leetcode.cn/problems/integer-break/)                  | 转移方程的书写注意有两种情况：拆分or不拆分                                             |
-| [回文子串](https://leetcode.cn/problems/palindromic-substrings/)         | 对回文串的判断也存在重叠子问题。重点是考虑DP数组的遍历顺序。根据转移方程来规划遍历顺序 |
-| [分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/) | 01背包第一题，注意本题的value选择有一点绕                                              |
-| [零钱兑换](https://leetcode.cn/problems/coin-change/)                    | 完全背包第一题，按照模版套公式，注意初始化                                             |
-| [零钱兑换 II](https://leetcode.cn/problems/coin-change-ii/)              | 完全背包第二题，首先确定求的是组合数，因此DP数组的值代表组合数。还要注意初始化问题     |
+| 题目                                                                                                | 提示                                                                                   |
+| --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [最小路径和](https://leetcode.cn/problems/minimum-path-sum/)                                           | DP基础题，注意转移方向。如果是单边移动一般是DP，如果各个方向可能是搜索或者图论         |
+| [整数拆分](https://leetcode.cn/problems/integer-break/)                                                | 转移方程的书写注意有两种情况：拆分or不拆分                                             |
+| [回文子串](https://leetcode.cn/problems/palindromic-substrings/)                                       | 对回文串的判断也存在重叠子问题。重点是考虑DP数组的遍历顺序。根据转移方程来规划遍历顺序 |
+| [分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)                               | 01背包第一题，注意本题的value选择有一点绕                                              |
+| [零钱兑换](https://leetcode.cn/problems/coin-change/)                                                  | 完全背包第一题，按照模版套公式，注意初始化                                             |
+| [零钱兑换 II](https://leetcode.cn/problems/coin-change-ii/)                                            | 完全背包第二题，首先确定求的是组合数，因此DP数组的值代表组合数。还要注意初始化问题     |
+| [K 个不相交子数组的最大能量值](https://leetcode.cn/problems/maximum-strength-of-k-disjoint-subarrays/) | 划分DP例题，求解不同数组划分的最大值                                                   |
