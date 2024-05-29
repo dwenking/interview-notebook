@@ -1,9 +1,12 @@
 # Table of Contents
-## 编程基础
-- [Python](#python)
-- [Java](#java)
 
-## 数据结构与算法
+**编程基础**
+
+- [Python](note/python.md)
+- [Java](note/java.md)
+
+**数据结构与算法**
+
 - [基本知识](#基本知识)
 - [常用数据结构](#常用数据结构)
   - [二叉树](#二叉树)
@@ -17,98 +20,13 @@
 - [补充算法](#补充算法)
   - [前缀树（Trie）](#前缀树trie)
 
-## 操作系统
+**操作系统**
+
 - [文件系统](#文件系统)
 
-## 数据库
+**数据库**
 
-## 设计模式
-
-# 编程基础
-
-## Python
-
-| Class         | Description                    | Method                                                         |
-| ------------- | ------------------------------ | -------------------------------------------------------------- |
-| 数学运算      | 整除向下取整                   | a // 2                                                         |
-|               | 整除向上取整                   | math.ceil(a / 2)                                               |
-| str           | 统计字符串中的子字符串出现个数 | s.count()                                                      |
-|               | list合并成字符串               | "".join(list)                                                  |
-| array         | 创建固定大小的数组             | l = [0] * m<br />l = [[0] * m for _ in range(n)]               |
-|               | 切片                           | lastTwo = l[-2:]                                               |
-| list          | 新建列表                       | l = []                                                         |
-|               | 插入新元素                     | l.append(1)<br />l.insert(1, 1)                                |
-|               | 移除元素                       | l.remove(1)<br />l.pop(idx)                                    |
-|               | 反转列表                       | l.reverse()                                                    |
-|               | 对列表进行排序                 | l.sort()<br />l2 = sorted(l, key=lambda x: x[0], reverse=True) |
-|               | 统计列表中的元素               | l.count(1)<br />max(l)<br />min(l)                             |
-|               | 列表拷贝                       | l2 = l1[:]<br />l2 = copy.deepcopy(l1) # 深拷贝                |
-|               | 查找                           | l.index(a)                                                     |
-| set           | 新建集合                       | s = set('abracadabra')<br />s = set(l)                         |
-|               | 插入新元素                     | s.add('x')                                                     |
-|               | 移除元素                       | s.remove('x')                                                  |
-| dict          | 新建字典                       | dict = {}                                                      |
-|               | 添加新元素                     | dict.get(key, 0)                                               |
-|               | 遍历字典                       | for key,value in dict.items():                                 |
-| Counter       | 新建计数                       | c = Counter()                                                  |
-| stack         | 新建栈                         | s = []                                                        |
-|               | 添加元素                       | s.append(1)                                                    |
-|               | 弹出元素                       | val = s.pop()                                                  |
-| queue         | 新建队列                       | q = []                                                         |
-|               | 添加元素                       | q.append(1)                                                    |
-|               | 弹出元素                       | q.pop(0)                                                       |
-| deque         | 新建双向队列                   | que = collections.deque()                                      |
-|               | 添加元素                       | que.append(1)                                                  |
-|               | 弹出元素                       | que.popleft()                                                  |
-| priorityqueue | 新建优先队列                   | pq = []                                                        |
-|               | 插入元素                       | heapq.heappush(pq, 1) # 小根                                   |
-|               | 弹出元素                       | heapq.heappop(pq)                                              |
-| 其他          | 生成前缀和                     | accumulate(data, initial=0)                                    |
-|               | 遍历多个数组                   | for x, f in zip(nums, freq):                                   |
-
-## Java
-
-| Class          | Description        | Method                                                                                             |
-| -------------- | ------------------ | -------------------------------------------------------------------------------------------------- |
-| 控制台输入输出 | 创建对象           | Scanner input = new Scanner(System.in);                                                        |
-|                | 读取整数           | int a = input.nextInt();                                                                           |
-|                | 读取空格分割字符   | String s = input.next();                                                                           |
-|                | 读取回车分割字符   | String s = input.nextLine();                                                                       |
-|                | 循环读取           | while (input.hasNextLine(s))                                                                       |
-|                | 格式化输出         | System.out.format();                                                                               |
-| Arrays         | 排序               | Arrays.sort(a);                                                                                    |
-|                | 填充               | Arrays.fill(a, 1);                                                                                 |
-| List           | 新建列表           | List `<Integer>` a = new ArrayList<>();                                                          |
-|                | 加入元素           | a.add(1);                                                                                          |
-|                | 移除元素           | a.remove(4);                                                                                       |
-|                | 对列表排序         | Collections.sort(a);                                                                               |
-|                | 将列表反转         | Collections.reverse(a);                                                                            |
-|                | 统计列表中元素     | Collections.max(a);<br />Collections.min(a);                                                       |
-| Set            | 新建集合           | Set `<Character>` s = new HashSet `<Character>`();                                             |
-|                | 加入元素           | s.add('a');                                                                                        |
-|                | 移除元素           | s.remove('a');                                                                                     |
-|                | 查询是否包含某元素 | s.contains('a');                                                                                   |
-|                | 清除集合           | s.clear();                                                                                         |
-| Map            | 新建哈希表         | Map<Integer,Integer> m = new HashMap<>();                                                          |
-|                | 加入新元素         | m.put(a, b);                                                                                       |
-|                | 获取元素           | m.get(k);                                                                                          |
-|                | 查询元素           | m.containsKey(k)                                                                                   |
-|                | 元素不存在时的处理 | m.putIfAbsent(k, 0);<br />m.getOrDefault(k, 0);                                                    |
-|                | 遍历元素           | for (Map.Entry<String, Integer> en : m.entrySet());<br />en.getKey();<br />en.getValue();          |
-| Stack          | 新建栈             | Stack `<Integer>` s = new LinkedList<>();                                                        |
-|                | 加入元素           | s.push(1);                                                                                         |
-|                | 弹出元素           | s.pop();                                                                                           |
-| Queue          | 新建队列           | Queue `<Integer>` q = new LinkedList<>();                                                        |
-|                | 加入元素           | q.offer(1);                                                                                        |
-|                | 弹出元素           | q.poll();                                                                                          |
-| Deque          | 新建双向队列       | Deque `<Integer>` dq = new LinkedList<>();                                                       |
-|                | 加入元素           | dq.addFirst(1);<br />dq.addLast(1);                                                                |
-|                | 弹出元素           | dq.pollFirst();<br />dq.pollLast();                                                                |
-|                | 获得元素           | dq.peekFirst();<br />dq.peekLast();                                                                |
-| PriorityQueue  | 新建优先队列       | PriorityQueue `<Integer>` pq = new PriorityQueue<>(((o1, o2) -> {return o2 - o1;})); // 默认小根 |
-|                | 查询堆顶           | pq.peek();                                                                                         |
-|                | 加入元素           | pq.offer(1);                                                                                       |
-|                | 弹出元素           | pq.poll();                                                                                         |
+**设计模式**
 
 # 数据结构与算法
 
@@ -626,6 +544,18 @@ class Trie:
 
 # 数据库
 
+## 理论基础
+
+1. **ACID模型**
+   * **原子性（Atomicity）** ： 事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；
+   * **一致性（Consistency）** ： 执行事务前后，不能违背数据库的约束；
+   * **隔离性（Isolation）** ： 并发访问数据库时，各并发事务之间是独立的；
+   * **持久性（Durability）** ： 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。
+2. **数据库完整性**
+   * **实体完整性（Entity Integrity）**：数据库中每个元组都是可区分的，唯一的；一般通过定义主键来实现
+   * **参照完整性（Referential Integrity）**：外键字段的值必须在关联表的主键中存在或者是NULL。
+   * **用户定义的完整性（User-Defined Integrity）**：用户定义的完整性是指特定于应用的业务规则，这些规则由数据库设计者根据具体应用需求自定义设定。例如，一个银行账户的余额可能被设置为不允许为负数。
+
 ## 数据库分片
 
 * **定义**：把数据切分成若干部分，然后将这些部分分散存储在多个数据库服务器上。分片能让数据库处理更多事务，存储更多数据。
@@ -641,7 +571,6 @@ class Trie:
     * 适用于包含大量未使用列的表，通过隔离频繁访问的数据来提高性能。
 
 # 设计模式
-
 
 # 参考资料
 
