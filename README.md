@@ -4,6 +4,7 @@
 
 - [Python](note/python.md)
 - [Java](note/java.md)
+- [Bash](note/bash.md)
 
 **数据结构与算法**
 
@@ -574,5 +575,6 @@ class Trie:
 
 # 参考资料
 
+* [谷歌开源项目风格指南](https://zh-google-styleguide.readthedocs.io/en/latest/index.html)
 * [代码随想录](https://programmercarl.com/)
 * [图解计算机基础](https://xiaolincoding.com/)
