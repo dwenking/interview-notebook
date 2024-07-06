@@ -17,7 +17,7 @@ C++支持声明与定义的分离。如果有一个很常用的函数 `void f()`
 **g++使用：**
 
 ```bash
-g++ -o target_name source1.cpp source2.cpp -I header_path -L libfile_path
+g++ -o <target_name> <source1.cpp source2.cpp> -I <header_path> -L <libfile_path>
 ```
 
 ## CMake

@@ -41,3 +41,9 @@
 |               | 弹出元素                       | heapq.heappop(pq)                                              |
 | 其他          | 生成前缀和                     | accumulate(data, initial=0)                                    |
 |               | 遍历多个数组                   | for x, f in zip(nums, freq):                                   |
+
+## 面向对象
+
+### init和new方法的区别
+
+\_\_new\_\_ 方法在一个新实例创建之前被调用。与 \_\_init\_\_ 不同，\_\_init\_\_ 方法用于初始化实例，而 \_\_new\_\_ 方法实际创建并返回这个实例。_\_new\_\_ 方法先于_init\_\_执行。
