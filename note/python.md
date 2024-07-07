@@ -41,6 +41,7 @@
 |               | 弹出元素                       | heapq.heappop(pq)                                              |
 | 其他          | 生成前缀和                     | accumulate(data, initial=0)                                    |
 |               | 遍历多个数组                   | for x, f in zip(nums, freq):                                   |
+|               | 读入命令行输入                 | v, e = [int(n) for n in input().split(' ')                     |
 
 ## 面向对象
 
