@@ -81,22 +81,22 @@
 迭代法的实现首先需要一个新建一个单独的**指针**用来访问树上的结点，并且使用一个临时的**栈**来辅助遍历。以前序遍历为例，实现如下：
 
 ```python
-class Solution:
-    def preorderTraversal(self, root: TreeNode) -> List[int]:
-        res = []
-        if not root:
-            return res
-  
-        stack = []
-        node = root
-        while stack or node:
-            while node:
-                res.append(node.val)
-                stack.append(node)
-                node = node.left
-            node = stack.pop()
-            node = node.right
-        return res
+res = []
+if not root:
+    return res
+
+stack = []
+node = root
+
+while stack or node:
+    while node:
+        res.append(node.val)
+        stack.append(node)
+        node = node.left
+    node = stack.pop()
+    node = node.right
+
+return res
 ```
 
 ##### 广度遍历
@@ -104,22 +104,22 @@ class Solution:
 广度遍历的迭代法需要一个**队列**来辅助遍历：
 
 ```python
-class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root: return []
-        res, queue = [], collections.deque()
-        queue.append(root)
-        while queue:
-            tmp = []
-            for _ in range(len(queue)):
-                node = queue.popleft()
-                tmp.append(node.val)
-                if node.left: 
-			        queue.append(node.left)
-                if node.right: 
-			        queue.append(node.right)
-                    res.append(tmp)
-        return res
+if not root: return []
+res, queue = [], collections.deque()
+queue.append(root)
+
+while queue:
+    tmp = []
+    for _ in range(len(queue)):
+        node = queue.popleft()
+        tmp.append(node.val)
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+            res.append(tmp)
+
+return res
 ```
 
 #### 参考习题
@@ -210,31 +210,31 @@ def bfs(grid, visited, x, y):
 
 ```python
 class UF:
-	def __init__(self, n):
-		# 初始化时互不连通
-		self.count = n
+    def __init__(self, n):
+        # 初始化时互不连通
+        self.count = n
         # 父节点指针初始指向自己
         self.parent = [i for i in range(n)]
 
-	def union(self, p, q):
-		root_p = self.find(p)
-        	root_q = self.find(q)
-		if root_p == root_q:
+    def union(self, p, q):
+        root_p = self.find(p)
+        root_q = self.find(q)
+        if root_p == root_q:
             return
-		self.parent[root_p] = root_q
-		self.count -= 1
+        self.parent[root_p] = root_q
+        self.count -= 1
 
-	def find(self, x: int):
-		if self.parent[x] != x:
-            	self.parent[x] = self.find(self.parent[x]) # 路径压缩
-        	return self.parent[x]
+    def find(self, x: int):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x]) # 路径压缩
+        return self.parent[x]
 
-	def connected(self, p: int, q: int) -> bool:
+    def connected(self, p: int, q: int) -> bool:
         root_p = self.find(p)
         root_q = self.find(q)
         return root_p == root_q
 
-	def count(self) -> int:
+    def count(self) -> int:
         return self.count
 ```
 
@@ -313,7 +313,7 @@ while heap:
 
 Floyd算法用于解决多源最短路问题，实现时注意遍历顺序：
 
-```python
+```java
 # 注意k在最外层循环
 for (int k = 1; k <= n; k++) {
     for (int i = 1; i <= n; i++) {
@@ -554,7 +554,6 @@ for(int i = 0; i < weight.size(); i++) { // 遍历物品
 for(int i = 0; i < weight.size(); i++) { // 遍历物品
     for(int j = weight[i]; j <= bagWeight ; j++) { // 遍历背包容量
         dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
-
     }
 }
 ```
