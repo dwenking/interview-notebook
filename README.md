@@ -178,20 +178,20 @@ def dfs(graph, s):
 visited =  [[False] * n for _ in range(m)]
 
 def bfs(grid, visited, x, y):
-  queue = [] 
-  queue.append((x, y)) 
-  visited[x][y] = True 
-  
-  while queue: 
-    curx, cury = queue.pop(0)
-  
-    for dx, dy in (0,1),(1,0),(0,-1),(-1,0):
-      nextx, nexty = curx + dx, cury + dy
-      if nextx < 0 or nextx >= len(grid) or nexty < 0 or nexty >= len(grid[0]): 
-        continue
-      if not visited[nextx][nexty]:
-        queue.append((nextx, nexty)) 
-        visited[nextx][nexty] = True
+    queue = [] 
+    queue.append((x, y)) 
+    visited[x][y] = True 
+
+    while queue: 
+        curx, cury = queue.pop(0)
+
+        for dx, dy in (0,1),(1,0),(0,-1),(-1,0):
+            nextx, nexty = curx + dx, cury + dy
+            if nextx < 0 or nextx >= len(grid) or nexty < 0 or nexty >= len(grid[0]): 
+                continue
+            if not visited[nextx][nexty]:
+                queue.append((nextx, nexty)) 
+                visited[nextx][nexty] = True
 ```
 
 #### 并查集
@@ -213,29 +213,29 @@ class UF:
 	def __init__(self, n):
 		# 初始化时互不连通
 		self.count = n
-        	# 父节点指针初始指向自己
-        	self.parent = [i for i in range(n)]
+        # 父节点指针初始指向自己
+        self.parent = [i for i in range(n)]
 
 	def union(self, p, q):
 		root_p = self.find(p)
         	root_q = self.find(q)
 		if root_p == root_q:
-            		return
+            return
 		self.parent[root_p] = root_q
 		self.count -= 1
 
 	def find(self, x: int):
 		if self.parent[x] != x:
-            		self.parent[x] = self.find(self.parent[x]) # 路径压缩
+            	self.parent[x] = self.find(self.parent[x]) # 路径压缩
         	return self.parent[x]
 
 	def connected(self, p: int, q: int) -> bool:
-        	root_p = self.find(p)
-        	root_q = self.find(q)
-        	return root_p == root_q
+        root_p = self.find(p)
+        root_q = self.find(q)
+        return root_p == root_q
 
 	def count(self) -> int:
-        	return self.count
+        return self.count
 ```
 
 **理解并查集的路径压缩：**
@@ -290,7 +290,7 @@ for e in edge:
 
 实现堆优化的Dijkstra，用一个**小顶堆**来对边的权值排序：
 
-```
+```python
 dis = [inf] * n
 dis[st] = 0
 heap = [(0, st)]
@@ -338,6 +338,10 @@ for (int k = 1; k <= n; k++) {
 
 ### 排序
 
+#### 快速排序
+
+#### 归并排序
+
 ### 双指针
 
 #### 基本概念
@@ -353,6 +357,7 @@ for (int k = 1; k <= n; k++) {
 
 | 题目                                                            | 提示                                                                   |
 | --------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [三数之和](https://leetcode.cn/problems/3sum/)                     | 双指针基础题                                                           |
 | [验证回文串 II](https://leetcode.cn/problems/valid-palindrome-ii/) | 题目能够删除一个字符，注意删除可以有两种方法                           |
 | [移除元素](https://leetcode.cn/problems/remove-element/)           | 双指针，一个指向目前处理好的部分，一个指向待处理部分，注意指针移动方向 |
 
@@ -371,10 +376,10 @@ for (int k = 1; k <= n; k++) {
 
 **== target**
 
-注意，因为选择的是左闭右开的区间里，也就是 [left, right)，那么题中：
+选择的是左闭右开的区间，也就是 [left, right)，那么：
 
 * while (left < right)，这里使用 < ,因为left == right在区间 [left, right) 是没有意义的
-* right 更新为 mid，因为当前 nums[mid] 不等于 target ，去左区间继续寻找，而寻找区间是左闭右开区间，所以right更新为middle
+* right 更新为 mid，因为当前 nums[mid] 不等于 target ，去左区间继续寻找，而寻找区间是左闭右开区间，所以right更新为mid
 
 ```java
 public int search(int[] nums, int target) {
@@ -393,13 +398,33 @@ public int search(int[] nums, int target) {
 }
 ```
 
+**>= target**
+
+查找>= target的第一个值，思路是：先找到肯定不成立的范围，来缩小区间
+
+```java
+public int search(int[] nums, int target) {
+    int left = 0, right = nums.length;
+    while (left < right) {
+        int mid = (left + right) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return left;
+}
+```
+
 #### 参考习题
 
-| 题目                                                                                     | 提示                                                                          |
-| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [分割数组的最大值](https://leetcode.cn/problems/split-array-largest-sum/)                   | 二分查找的最大值最小问题，已知要将数组分成m部分，二分m部分的最大值            |
-| [标记所有下标的最早秒数 I](https://leetcode.cn/problems/earliest-second-to-mark-indices-i/) | 时间越大，越能够标记所有下标，因此具有**单调性，** 使用二分能够解决问题 |
-| [寻找峰值](https://leetcode.cn/problems/find-peak-element/)                                 | 每次排除不存在答案的一部分                                                    |
+| 题目                                                                                                                             | 提示                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [在排序数组中查找元素的第一个和最后一个位置](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/) | 二分查找一个范围的应用                                                        |
+| [分割数组的最大值](https://leetcode.cn/problems/split-array-largest-sum/)                                                           | 二分查找的最大值最小问题，已知要将数组分成m部分，二分m部分的最大值            |
+| [标记所有下标的最早秒数 I](https://leetcode.cn/problems/earliest-second-to-mark-indices-i/)                                         | 时间越大，越能够标记所有下标，因此具有**单调性，** 使用二分能够解决问题 |
+| [寻找峰值](https://leetcode.cn/problems/find-peak-element/)                                                                         | 每次排除不存在答案的一部分                                                    |
 
 ### 回溯
 
