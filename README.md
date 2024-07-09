@@ -12,7 +12,7 @@
 - [基本知识](#基本知识)
 - [数据结构](#数据结构)
   - [二叉树](#二叉树)
-  - [图](#图)
+  - [图论](#图论)
 - [常用算法](#常用算法)
   - [排序](#排序)
   - [双指针](#双指针)
@@ -139,7 +139,7 @@ return res
 | [二叉搜索树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/)                   | 理解BST中最近公共祖先具有的性质                                                                                                                                        |
 | [删除二叉搜索树中的节点](https://leetcode.cn/problems/delete-node-in-a-bst/)                                               | 分类讨论不同情况，特别是左右子树都不为空的情况                                                                                                                         |
 
-### 图
+### 图论
 
 #### 基本概念
 
@@ -340,7 +340,86 @@ for (int k = 1; k <= n; k++) {
 
 #### 快速排序
 
+快速排序是不稳定排序，最坏情况复杂度 $O(n^2)$，最好情况复杂度 $O(nlog(n))$。
+
+**思想：** 每一次都排定一个元素，然后递归地去排它左边的部分和右边的部分，直到数组有序。
+
+```java
+private int partition(int[] arr, int bg, int ed) {
+    Random random = new Random();
+    int rand = random.nextInt(ed - bg + 1) + bg;
+    swap(arr, bg, rand); // 随机选择一个元素作为pivot
+
+    int i = bg; // i指向当前pivot的位置
+    for (int j = bg + 1; j <= ed; j++) {
+        // 小的换到前面
+        if (arr[j] <= arr[bg]) {
+            swap(arr, ++i, j);
+        }
+    }
+
+    // pivot换到i的位置
+    swap(arr, bg, i);
+    return i;
+}
+
+public void quickSort(int[] arr, int bg, int ed){
+    if(bg >= ed) return;
+    int idx = partition(arr, bg, ed);
+    quickSort(nums, bg, mid - 1);
+    quickSort(nums, idx + 1, ed);
+}
+```
+
 #### 归并排序
+
+归并排序是稳定排序，复杂度为 $O(nlog(n))$，空间复杂度为 $O(n)$。
+
+**思想：** 归并排序需要一个额外的数组空间来辅助排序，通过分治逐步合并为有序数组。
+
+```java
+public static void merge(int[] arr,int low, int mid, int high, int[] tmp){
+    int i = 0;
+    int j = low, k = mid + 1;  // 左边序列和右边序列起始索引
+
+    // 合并过程
+    while(j <= mid && k <= high){
+        if (arr[j] < arr[k]) {
+            tmp[i++] = arr[j++];
+        } else {
+            tmp[i++] = arr[k++];
+        }
+    }
+
+    // 若还有剩余，则将其全部拷贝进tmp[]中
+    while(j <= mid){  
+        tmp[i++] = arr[j++];
+    }
+  
+    while(k <= high){
+        tmp[i++] = arr[k++];
+    }
+    for(int t=0;t<i;t++){
+        arr[low+t] = tmp[t];
+    }
+}
+
+public static void mergeSort(int[] arr,int low,int high,int[] tmp){
+    if(low < high){
+        int mid = (low + high) / 2;
+        mergeSort(arr,low, mid, tmp); // 对左边序列进行归并排序
+        mergeSort(arr, mid + 1, high, tmp);  // 对右边序列进行归并排序
+        merge(arr, low, mid, high, tmp);    // 合并两个有序序列
+    }
+}
+```
+
+#### 参考习题
+
+| 题目                                                                  | 提示                                                                  |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [排序数组](https://leetcode.cn/problems/sort-an-array/)                  | 排序基础题                                                            |
+| [前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/) | 使用快排解决TopK问题（不需要整个过程，只要完成第k个位置的固定就可以） |
 
 ### 双指针
 
