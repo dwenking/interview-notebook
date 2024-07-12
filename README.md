@@ -528,9 +528,9 @@ public int search(int[] nums, int target) {
 什么时候使用 `used` 数组，什么时候使用 `beginIdx` 变量：
 
 * 排列问题，讲究顺序（即 [2, 2, 3] 与 [2, 3, 2] 视为不同列表时），需要记录哪些数字已经使用过，此时用 `used` 数组；
-* 组合问题，不讲究顺序（即 [2, 2, 3] 与 [2, 3, 2] 视为相同列表时），需要按照某种顺序搜索，此时使用 `beginIdx` 变量（因为没有顺序，因此最开始就要定下一个顺序）。
+* 组合问题，不讲究顺序（即 [2, 2, 3] 与 [2, 3, 2] 视为相同列表时），**需要按照某种顺序搜索**，此时使用 `beginIdx` 变量（因为没有顺序，因此最开始就要定下一个顺序）。
 
-排列：
+排列，当数组中不存在重复元素时：
 
 ```java
 class Solution {
@@ -549,6 +549,7 @@ class Solution {
             return;
         }
 
+        // 排列的for循环是遍历数组中每一个数
         for (int i = 0; i < nums.length; i++) {
             if (use[i]) continue;
             use[i] = true;
@@ -561,7 +562,40 @@ class Solution {
 }
 ```
 
-组合：
+如果数组中**存在重复元素**，则需要首先对数组排序（目的是将相同的数放在一起，便于处理）。接着去重的思路重点：**回溯树的每一层不能重复选**。因此在 `for`循环中跳过被使用过的数字：
+
+```java
+class Solution {
+    LinkedList<Integer> tmp = new LinkedList<>();
+    List<List<Integer>> res = new ArrayList<>();
+
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        boolean[] use = new boolean[nums.length];
+        Arrays.sort(nums); // 排序
+        backTracking(nums, use);
+        return res;
+    }
+
+    private void backTracking(int nums[], boolean[] use) {
+        if (tmp.size() == nums.length) {
+            res.add(new ArrayList<Integer>(tmp));
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            // 每一层的去重，多加一个条件，注意筛选条件是use[i - 1] == false，因为这样才是同一层被使用过（use[i - 1] == true是在上层被使用）
+            if (use[i] || (i > 0 && nums[i] == nums[i - 1] && !use[i - 1])) continue;
+            use[i] = true;
+            tmp.add(nums[i]);
+            backTracking(nums, use);
+            tmp.removeLast();
+            use[i] = false;
+        }
+    }
+}
+```
+
+组合，当数组中不存在重复元素时：
 
 ```java
 class Solution {
@@ -577,10 +611,47 @@ class Solution {
         res.add(new ArrayList<Integer>(list));
         int s = nums.length;
 
-        for (int i = idx;i < s;i++) {
+        // 组合的for循环是从idx开始的
+        for (int i = idx; i < s; i++) {
             list.add(nums[i]);
-            backTracking(nums, i+1);
+            // 注意这里是i + 1不是idx + 1，不要写错了
+            backTracking(nums, i + 1);
             list.removeLast();
+        }
+    }
+}
+```
+
+如果数组中**存在重复元素**，则需要首先对数组排序（目的是将相同的数放在一起，便于处理）。接着去重的思路重点：**回溯树的每一层不能重复选**。因此在 `for`循环中跳过被使用过的数字：
+
+```java
+class Solution {
+    List<List<Integer>> res = new ArrayList<>(); 
+    LinkedList<Integer> list = new LinkedList<>();
+
+    public List<List<Integer>> subsets(int[] nums) {
+        Arrays.sort(nums);
+        boolean[] use = new boolean[nums.length];
+        backTracking(nums, 0);
+        return res;
+    }
+
+    public void backTracking(int[] nums, boolean[] use, int idx) {
+        res.add(new ArrayList<Integer>(list));
+        int s = nums.length;
+
+        // 组合的for循环是从idx开始的
+        for (int i = idx; i < s; i++) {
+            // 同一层去重，去重思想和排列的去重是相似的
+            if (i > 0 && nums[i] == nums[i - 1] && !use[i - 1]) {
+                continue;
+            }
+            use[i] = true;
+            list.add(nums[i]);
+            // 注意这里是i + 1不是idx + 1，不要写错了
+            backTracking(nums, i + 1);
+            list.removeLast();
+            use[i] = false;
         }
     }
 }
@@ -588,10 +659,12 @@ class Solution {
 
 #### 参考习题
 
-| 题目 | 提示 |
-| ---- | ---- |
-|      |      |
-|      |      |
+| 题目                                                           | 提示                                                                                                        |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [全排列 II](https://leetcode.cn/problems/permutations-ii/)        | 排列例题，注意去重方法                                                                                      |
+| [组合总和 II](https://leetcode.cn/problems/combination-sum-ii/)   | 组合例题，注意去重方法                                                                                      |
+| [组合总和 III](https://leetcode.cn/problems/combination-sum-iii/) | 组合例题，注意这里每个数字只能使用一次                                                                      |
+| [N 皇后](https://leetcode.cn/problems/n-queens/)                  | n皇后问题，主要是如何判断对角线是否存在皇后，可以直接遍历检查 or 对角线数组标记，每个方向对角线的数量为2n-1 |
 
 ### 动态规划
 
